@@ -11,7 +11,6 @@ export default class Square extends Component {
   }
 
   render(){
-    console.log(this.canMove());
     return (
       <button className="square" onClick={this.props.onClick}>
         {this.props.value}

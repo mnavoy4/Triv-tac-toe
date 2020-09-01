@@ -15,7 +15,7 @@ export default class Board extends Component {
     
     render() {
       return (
-        <div>
+        <div class='center-board'>
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}

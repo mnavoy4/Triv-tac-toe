@@ -4,13 +4,24 @@ import Question from './Question'
 
 export default class Game extends Component {
 
-  state= {
+  state = {
+    questions: [],
     stepNumber: 0,
     xIsNext: true,
     history: [{
       squares: Array(9).fill(null)
     }],
-    correctAnswer: false
+    correctAnswer: false,
+    answered: false,
+    renderedQuestion: null
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/trivia')
+      .then(response => response.json())
+      .then(questions => this.setState({
+        questions: questions 
+      }))
   }
 
   determineCorrectAnswer = (event) => {
@@ -59,6 +70,7 @@ export default class Game extends Component {
           squares: squares
         }
       ]),
+      correctAnswer: false,
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
@@ -69,7 +81,6 @@ export default class Game extends Component {
     const current = history[this.state.stepNumber];
     const winner = this.calculateWinner(current.squares);
 
-
     let status;
     if (winner) {
       status = "Winner: " + winner;
@@ -77,21 +88,30 @@ export default class Game extends Component {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
-    return (
-      <div className="game">
-        <Question determineCorrectAnswer={this.determineCorrectAnswer} />
-        <div className="game-board">
-          <Board
-            correctAnswer={this.state.correctAnswer}
-            determineCorrectAnswer={this.determineCorrectAnswer}
-            squares={current.squares}
-            onClick={event => this.state.correctAnswer ? this.handleClick(event) : null}
-          />
-          <div className='game-info'>
-            <div>{status}</div>
-          </div>
+  return (
+    <div className="game">
+      <div class="flex-container">
+      <header>
+      <h1>Triv Tac Toe</h1>
+      </header>
+      <main>
+      {this.state.questions.length ? 
+        <Question question={this.state.questions[0]} determineCorrectAnswer={this.determineCorrectAnswer} /> :
+        null
+      }
+      <div className="game-board">
+        <Board
+          correctAnswer={this.state.correctAnswer}
+          squares={current.squares}
+          onClick={event => this.state.correctAnswer ? this.handleClick(event) : null}
+        />
         </div>
+        <div className='game-info'>
+          <div>{status}</div>
+        </div>
+        </main>
       </div>
-    );
-  }
+    </div>
+  );
+}
 }

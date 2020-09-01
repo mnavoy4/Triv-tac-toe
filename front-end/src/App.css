@@ -1,23 +1,40 @@
-
 body {
+  display: flex;
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+  background-image: url(https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/37247/square_thumb%402x.jpg)
 }
-
+header {
+  border-color: lightcoral;
+  border-width: 30px;
+  border-style: double;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
 ol, ul {
   padding-left: 30px;
 }
-
+main {
+  border-color:lightcoral;
+  border-width: 8px;
+  border-style: solid;
+  background-color: white;
+  display: table;
+  width: 100%;
+  text-align: center;
+}
 .board-row:after {
   clear: both;
   content: "";
   display: table;
 }
-
 .status {
   margin-bottom: 10px;
 }
-
 .square {
   background: #fff;
   border: 1px solid #999;
@@ -32,20 +49,28 @@ ol, ul {
   text-align: center;
   width: 34px;
 }
-
 .square:focus {
   outline: none;
 }
-
 .kbd-navigation .square:focus {
   background: #ddd;
 }
-
 .game {
   display: flex;
   flex-direction: row;
+  text-align: center;
 }
-
 .game-info {
   margin-left: 20px;
+}
+.flex-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
 }
