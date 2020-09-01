@@ -3,11 +3,11 @@ import Square from './Square'
 
 export default class Board extends Component {
 
-    renderSquare(i) {
+    renderSquare(squareNumber) {
       return (
         <Square
-          value={this.props.squares[i]}
-          onClick={() => this.props.onClick(i)}
+          value={this.props.squares[squareNumber]}
+          onClick={() => this.props.onClick(squareNumber)}
         />
       );
     }
