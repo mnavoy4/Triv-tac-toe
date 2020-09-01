@@ -79,6 +79,12 @@ export default class Game extends Component {
 
     return (
       <div className="game">
+        <div class="flex-container">
+        <header>
+        <h1>Triv Tac Toe</h1>
+        </header>
+        
+        <main>
         <Question determineCorrectAnswer={this.determineCorrectAnswer} />
         <div className="game-board">
           <Board
@@ -87,9 +93,12 @@ export default class Game extends Component {
             squares={current.squares}
             onClick={event => this.state.correctAnswer ? this.handleClick(event) : null}
           />
+          </div>
+          
           <div className='game-info'>
             <div>{status}</div>
           </div>
+          </main>
         </div>
       </div>
     );
