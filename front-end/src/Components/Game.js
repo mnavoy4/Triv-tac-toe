@@ -60,15 +60,15 @@ export default class Game extends Component {
   render(){
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    // const winner = calculateWinner(current.squares);
+    const winner = this.calculateWinner(current.squares);
 
 
-    // let status;
-    // if (winner) {
-    //   status = "Winner: " + winner;
-    // } else {
-    //   status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    // }
+    let status;
+    if (winner) {
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+    }
 
     return (
       <div className="game">
@@ -77,6 +77,9 @@ export default class Game extends Component {
             squares={current.squares}
             onClick={i => this.handleClick(i)}
           />
+          <div className='game-info'>
+            <div>{status}</div>
+          </div>
         </div>
       </div>
     );
