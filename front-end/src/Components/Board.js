@@ -6,6 +6,7 @@ export default class Board extends Component {
     renderSquare(squareNumber) {
       return (
         <Square
+          correctAnswer={this.props.correctAnswer}
           value={this.props.squares[squareNumber]}
           onClick={() => this.props.onClick(squareNumber)}
         />

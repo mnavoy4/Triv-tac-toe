@@ -4,7 +4,9 @@ export default class IncorrectAnswer extends Component {
 
   render(){
     return (
-      <div className='incorrect'></div>
+      <div className='incorrect'>
+        Incorrect
+      </div>
     )
   }
 }

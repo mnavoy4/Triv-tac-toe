@@ -4,22 +4,16 @@ import IncorrectAnswer from './IncorrectAnswer';
 
 export default class Question extends Component {
 
-  handleClick = (event) => {
-    
-  }
-
-  determineCorrectAnswer = () => {
-
-  }
   render(){
+    console.log(this.props);
     return(
       <div className='question'>
         <div className='question-bubble'>Question</div>
         <br/>
-        <div className='answer-bubble'>Incorrect</div>
-        <div className='answer-bubble'>Incorrect</div>
-        <div className='answer-bubble'>Incorrect</div>
-        <div className='answer-bubble'>Correct</div>
+        <div onClick={this.props.determineCorrectAnswer} className='incorrect-answer-bubble'>Incorrect</div>
+        <div onClick={this.props.determineCorrectAnswer} className='incorrect-answer-bubble'>Incorrect</div>
+        <div onClick={this.props.determineCorrectAnswer} className='incorrect-answer-bubble'>Incorrect</div>
+        <div onClick={this.props.determineCorrectAnswer} className='correct-answer-bubble'>Correct</div>
       </div>
     )
   }

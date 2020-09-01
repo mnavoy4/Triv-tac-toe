@@ -4,7 +4,7 @@ export default class CorrectAnswer extends Component {
 
   render(){
     return (
-      <div className='correct'></div>
+      <div className='correct'>Correct</div>
     )
   }
 
